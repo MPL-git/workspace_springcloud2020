@@ -10,12 +10,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+
 import javax.sql.DataSource;
 
 /**
  * @author Pengl
- * @create 2020-07-17 上午 11:35
- * 使用Seata对数据源进行代理
+ * @create 2020-07-18 下午 2:55
  */
 @Configuration
 public class DataSourceProxyConfig {
@@ -23,19 +23,16 @@ public class DataSourceProxyConfig {
 	@Value("${mybatis.mapperLocations}")
 	private String mapperLocations;
 
-
 	@Bean
 	@ConfigurationProperties(prefix = "spring.datasource")
 	public DataSource druidDataSource(){
 		return new DruidDataSource();
 	}
 
-
 	@Bean
 	public DataSourceProxy dataSourceProxy(DataSource dataSource) {
 		return new DataSourceProxy(dataSource);
 	}
-
 
 	@Bean
 	public SqlSessionFactory sqlSessionFactoryBean(DataSourceProxy dataSourceProxy) throws Exception {

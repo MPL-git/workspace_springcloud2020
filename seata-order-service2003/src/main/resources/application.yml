@@ -1,9 +1,9 @@
 server:
-  port: 2001
+  port: 2003
 
 spring:
   application:
-    name: seata-order-service
+    name: seata-account-service
   cloud:
     alibaba:
       seata:
@@ -14,19 +14,13 @@ spring:
         server-addr: localhost:8848
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://115.29.174.8:3306/seata_order
+    url: jdbc:mysql://115.29.174.8:3306/seata_account
     username: root
     password: Mr.Peng18695693060
 
 feign:
   hystrix:
     enabled: false
-  #Openfeign默认时间是1秒，调接口超时，则需放大超时时间
-  client:
-    config:
-      default:
-        connect-timeout: 10000
-        read-timeout: 10000
 
 logging:
   level:
@@ -35,3 +29,6 @@ logging:
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml
+
+
+
