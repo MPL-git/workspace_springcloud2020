@@ -1,8 +1,10 @@
 server:
+  #服务端口
   port: 9001
 
 spring:
   application:
+    #服务名
     name: nacos-payment-provider
   cloud:
     nacos:
@@ -10,6 +12,7 @@ spring:
         #配置Nacos地址
         server-addr: localhost:8848
 
+#暴露出web所有端点（默认只暴露了 info / health）
 management:
   endpoints:
     web:
